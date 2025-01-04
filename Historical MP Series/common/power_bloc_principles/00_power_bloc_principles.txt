@@ -1356,7 +1356,7 @@ principle_freedom_of_movement_2 = {
 		state_migration_quota_mult = 0.25
 		
 		# Increases chance to be picked for mass migrations
-		#country_mass_migration_attraction_mult = 0.5	
+		country_mass_migration_attraction_mult = 0.2	
 	}
 	
 	ai_weight = {
@@ -1371,7 +1371,7 @@ principle_freedom_of_movement_3 = {
 	member_modifier = {
 		# Modifiers from previous level(s)	
 		state_migration_quota_mult = 0.25
-		#country_mass_migration_attraction_mult = 0.5	
+		country_mass_migration_attraction_mult = 0.2	
 	}
 
 	power_bloc_modifier = {
