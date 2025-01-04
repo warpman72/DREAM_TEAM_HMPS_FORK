@@ -3,8 +3,7 @@
 # cost												The cost in AUT to set this Decree on a state (scales with Power Rank)
 # unlocking_technologies							A list of technologies, at least one of which must be known to the country to use this Focus
 # unlocking_laws									A list of laws, at least one which must be active in the country to use this Focus. If the country switches away from all unlocking laws the Focus will be removed
-# country_trigger									A trigger in country context that determines if the Decree is permitted/shown in interface or not; should invalidate the Decree on a weekly basis if found invalid 
-# state_trigger										A trigger in state context that determines if the Decree is permitted or not; should invalidate the Decree on a weekly basis if found invalid 
+# valid												A trigger in state context that determines if the Decree is permitted or not; should invalidate the Decree on a weekly basis if found invalid 
 # ai_weight											Scripted value which determines the chance of getting the Decree by AI
 
 decree_road_maintenance = {
@@ -87,10 +86,8 @@ decree_violent_suppression = {
 		standing_army
 	}
 	
-	country_trigger = {
-		NOT = { has_law = law_type:law_guaranteed_liberties }
-	}
-	state_trigger = {
+	valid = {
+		owner = { NOT = { has_law = law_type:law_guaranteed_liberties } }
 		turmoil >= 0.25	
 	}
 	modifier = {
@@ -137,33 +134,13 @@ decree_emergency_relief = {
 		centralization
 	}
 	modifier = {
-		state_tax_collection_mult = -0.5
+		state_welfare_payments_add = 1.0
 		#weekly_devastation_add has no effect on its own
 		#It is purely for aesthetics
 		#Check z_HMPS_utility JE to see how this works
-		weekly_devastation_add = -0.007	
-		state_food_security_add = 0.05
+		weekly_devastation_add = -0.007
 	}
-	state_trigger = {
-			OR = {
-				has_famine = yes
-				devastation > 0.2
-				ROOT.state_region = {
-					OR = {
-						has_harvest_condition = flood
-						has_harvest_condition = wildfire
-						has_harvest_condition = drought
-						has_harvest_condition = disease_outbreak
-						has_harvest_condition = extreme_winds	
-					}
-				}
-				any_scope_pop = {
-					percent >= 0.2
-					is_in_starvation = yes
-				}
-			}
-	}
-	cost = 50
+	cost = 100
 	
 	ai_weight = {
 		value = 0
@@ -190,29 +167,10 @@ decree_emergency_relief = {
 
 decree_promote_social_mobility = {
 	texture = "gfx/interface/icons/decree/decree_promote_social_mobility.dds"
-	
-	state_trigger = {
-		NOT = {
-			AND = {
-				owner = {
-					OR = {
-						has_law = law_type:law_hindu_caste_enforced
-						has_law = law_type:law_hindu_caste_codified
-					}
-				}
-				religion_percent_state = {
-					target = rel:hindu  
-					value >= 0.3
-				}
-			}
-		}
-	}
-	
 	modifier = {
 		state_education_access_add = 0.1
 		state_pop_qualifications_mult = 0.50
 	}
-	
 	cost = 100
 	
 	ai_weight = {
@@ -267,15 +225,15 @@ decree_promote_national_values = {
 	unlocking_technologies = {
 		centralization
 	}
-	state_trigger = {
+	valid = {
 		OR = {
 			has_assimilating_pops = yes
 			has_converting_pops = yes
 		}	
 	}
 	modifier = {
-		state_assimilation_mult = 0.5
-		state_conversion_mult = 0.5
+		state_assimilation_mult = 1
+		state_conversion_mult = 1
 	}
 	cost = 100
 	
@@ -342,7 +300,7 @@ decree_encourage_manufacturing_industry = {
 	texture = "gfx/interface/icons/decree/decree_encourage_manufacturing_industry.dds"
 	unlocking_technologies = {
 		manufacturies
-	}
+	}	
 	modifier = {
 		building_group_bg_manufacturing_throughput_add = 0.25
 		building_group_bg_service_throughput_add = 0.25
@@ -538,8 +496,11 @@ decree_encourage_resource_industry = {
 
 decree_greener_grass_campaign = {
 	texture = "gfx/interface/icons/decree/decree_greener_grass_campaign.dds"
-	state_trigger = {
+	valid = {
 		is_isolated_from_market = no
+	}
+	unlocking_principles = {
+		principle_freedom_of_movement_2
 	}
 	modifier = {
 		state_migration_pull_mult = 0.5
@@ -551,73 +512,54 @@ decree_greener_grass_campaign = {
 
 	ai_weight = {
 		value = 0
-
 		if = {
-			limit = {
+			limit = { 
 				any_scope_building = {
-					is_building_type = building_barracks
-					count >= 5
-				}				
-			}
-			add = 25
-		}		
-		if = {
-			limit = {
-				any_scope_building = {
-					is_building_type = building_barracks
-					count >= 10
-				}				
-			}
-			add = 50
-		}
-		if = {
-			limit = {
-				any_scope_building = {
-					is_building_type = building_barracks
-					count >= 25
-				}			
-			}
-			add = 75
-		}
-
-		if = {
-			limit = {
-				scope:country = {
-					OR = {
-						has_strategy = ai_strategy_unify_germany
-						has_strategy = ai_strategy_unify_italy
-					}
-				}
-			}
-			multiply = 5.0
-		}
-
-		if = {
-			limit = {
-				any_scope_building = {
-					is_building_type = building_naval_base
-					count >= 25
+					is_subsistence_building = yes
+					occupancy < 0.75
 				}
 			}
 			add = 50
 		}
 		if = {
-			limit = {
+			limit = { 
 				any_scope_building = {
-					is_building_type = building_naval_base
-					count >= 50
-				}			
+					is_subsistence_building = yes
+					occupancy < 0.5
+				}
+			}
+			add = 50
+		}
+		if = {
+			limit = { 
+				any_scope_building = {
+					is_subsistence_building = yes
+					occupancy < 0.25
+				}
 			}
 			add = 50
 		}		
+		if = {
+			limit = { 
+				is_incorporated = no
+				scope:country = { NOT = { has_law = law_type:law_colonial_resettlement } } # Already gives a hefty migration bonus
+			}
+			multiply = 2.0
+		}		
+		if = {
+			limit = { 
+				state_unemployment_rate >= 0.1 
+			}
+			multiply = 0
+		}
 	}
 }
 
 decree_enlistment_efforts = {
 	texture = "gfx/interface/icons/decree/decree_enlistment_efforts.dds"			
 	modifier = {
-		state_conscription_rate_add = 0.05
-		building_training_rate_mult = 0.25
+		state_conscription_rate_add = 0.02
+		building_training_rate_mult = 0.50
 	}
 	unlocking_technologies = {
 		mandatory_service
@@ -625,22 +567,12 @@ decree_enlistment_efforts = {
 	cost = 100
 	
 	ai_weight = {
-		value = 0
-
+		value = 0	
 		if = {
 			limit = {
 				any_scope_building = {
 					is_building_type = building_barracks
-					count >= 5
-				}				
-			}
-			add = 25
-		}		
-		if = {
-			limit = {
-				any_scope_building = {
-					is_building_type = building_barracks
-					count >= 10
+					count >= 25
 				}				
 			}
 			add = 50
@@ -649,24 +581,11 @@ decree_enlistment_efforts = {
 			limit = {
 				any_scope_building = {
 					is_building_type = building_barracks
-					count >= 25
+					count >= 50
 				}			
 			}
-			add = 75
+			add = 50
 		}
-
-		if = {
-			limit = {
-				scope:country = {
-					OR = {
-						has_strategy = ai_strategy_unify_germany
-						has_strategy = ai_strategy_unify_italy
-					}
-				}
-			}
-			multiply = 5.0
-		}
-
 		if = {
 			limit = {
 				any_scope_building = {
@@ -687,3 +606,4 @@ decree_enlistment_efforts = {
 		}		
 	}
 }
+
