@@ -43,7 +43,7 @@ principle_construction_2 = {
 	member_modifier = {
 		# Modifiers from previous level(s)
 		
-		state_construction_mult = 0.5
+		state_construction_mult = 0.05
 		
 		# Members Construction Sectors cost less infrastructure
 		building_group_bg_construction_infrastructure_usage_mult = -0.75
@@ -61,7 +61,7 @@ principle_construction_3 = {
 	member_modifier = {
 		# Modifiers from previous level(s)
 		
-		state_construction_mult = 0.5
+		state_construction_mult = 0.05
 		building_group_bg_construction_infrastructure_usage_mult = -0.75
 		
 		# Members can form Construction type Companies unlock triggers in the company
