@@ -25,6 +25,8 @@ law_ethnostate = {
 		country_acceptance_shared_heritage_trait_add = 20
 		country_acceptance_shared_cultural_trait_add = 0
 		country_acceptance_culture_base_add = 0
+		state_birth_rate_mult = 0.05
+
 	}
 	
 	acceptance_modifier = {
@@ -112,6 +114,8 @@ law_national_supremacy = {
 		country_acceptance_shared_heritage_trait_add = 40
 		country_acceptance_shared_cultural_trait_add = 20
 		country_acceptance_culture_base_add = 0
+		state_birth_rate_mult = 0.025
+
 	}
 	
 	acceptance_modifier = {
@@ -373,6 +377,7 @@ law_cultural_exclusion = {
 		country_acceptance_shared_heritage_trait_add = 60
 		country_acceptance_shared_cultural_trait_add = 40
 		country_acceptance_culture_base_add = 20
+		state_birth_rate_mult = -0.025
 	}
 	
 	acceptance_modifier = {
@@ -459,6 +464,7 @@ law_multicultural = {
 		country_acceptance_shared_heritage_trait_add = 85
 		country_acceptance_shared_cultural_trait_add = 80
 		country_acceptance_culture_base_add = 75
+		state_birth_rate_mult = -0.05
 	}
 	
 	acceptance_modifier = {
