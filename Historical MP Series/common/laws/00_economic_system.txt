@@ -450,7 +450,7 @@ law_command_economy = {
 		
 		building_nationalization_cost_mult = -0.5
 		building_nationalization_radicals_mult = -0.75
-		country_government_dividends_efficiency_add = 0.6
+		country_government_dividends_efficiency_add = 0.65
 		
 		country_leverage_resistance_mult = 0.25
 
