@@ -453,11 +453,12 @@ law_multicultural = {
 	modifier = {
 		#From this block, we only apply the highest value a Pop qualifies for
 		country_acceptance_primary_culture_add = 100
-		country_acceptance_shared_heritage_and_cultural_trait_add = 90
+		country_acceptance_shared_heritage_and_cultural_trait_add = 80
 		country_acceptance_shared_heritage_trait_add = 50
-		country_acceptance_shared_cultural_trait_add = 80
-		country_acceptance_culture_base_add = 40
-		state_birth_rate_mult = -0.05
+		country_acceptance_shared_cultural_trait_add = 40
+		country_acceptance_culture_base_add = 20
+		state_birth_rate_mult = -0.025
+		political_movement_radicalism_add = -1.00
 	}
 	
 	acceptance_modifier = {
