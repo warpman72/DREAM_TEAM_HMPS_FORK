@@ -135,7 +135,7 @@ pm_scholastic_education = {
 	
 	country_modifiers = {
 		workforce_scaled = { 
-			country_tech_spread_add = 1
+			country_tech_spread_add = 3
 		}
 	}
 	
@@ -147,9 +147,9 @@ pm_scholastic_education = {
 	
 	state_modifiers = {
 		workforce_scaled = { 
-			state_pop_qualifications_mult = 0.1
-			state_education_access_add = 0.025
-			state_migration_pull_mult = 0.01
+			state_pop_qualifications_mult = 0.20
+			state_education_access_add = 0.05
+			state_migration_pull_mult = 0.03
 		}
 	}
 }
@@ -163,7 +163,7 @@ pm_philosophy_department = {
 	
 	country_modifiers = {
 		workforce_scaled = { 
-			country_tech_spread_add = 2
+			country_tech_spread_add = 6
 		}
 	}
 	
@@ -175,9 +175,9 @@ pm_philosophy_department = {
 	
 	state_modifiers = {
 		workforce_scaled = { 
-			state_pop_qualifications_mult = 0.15
-			state_education_access_add = 0.05
-			state_migration_pull_mult = 0.02
+			state_pop_qualifications_mult = 0.40
+			state_education_access_add = 0.1
+			state_migration_pull_mult = 0.06
 		}	
 	}
 }
@@ -191,7 +191,7 @@ pm_analytical_philosophy_department = {
 	
 	country_modifiers = {
 		workforce_scaled = { 
-			country_tech_spread_add = 3
+			country_tech_spread_add = 9
 		}
 	}
 	
@@ -203,9 +203,9 @@ pm_analytical_philosophy_department = {
 	
 	state_modifiers = {
 		workforce_scaled = { 
-			state_pop_qualifications_mult = 0.20
-			state_education_access_add = 0.075
-			state_migration_pull_mult = 0.03
+			state_pop_qualifications_mult = 0.60
+			state_education_access_add = 0.15
+			state_migration_pull_mult = 0.09
 		}	
 	}
 }	
