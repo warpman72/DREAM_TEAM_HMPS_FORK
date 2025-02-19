@@ -16,7 +16,7 @@ AUS = {
 
 	tier = empire
 	
-	cultures = { south_german czech }
+	cultures = { south_german }# czech in normal hmps
 	capital = STATE_AUSTRIA
 }
 
