@@ -5022,7 +5022,11 @@ JAP = { # Japan
 		subject_canton = JAP_rising_sun		
 		priority = 10
 		trigger = {
+			OR = {
+			coa_def_fascist_flag_trigger = yes
 			coa_def_dictatorship_flag_trigger = yes
+			scope:actor ?= { has_law = law_type:law_technocracy }
+			}
 		}
 	}
 	flag_definition = {
@@ -5083,15 +5087,7 @@ JAP = { # Japan
 		trigger = { 
 			coa_def_american_ensign_trigger = yes
 		}
-	}	
-	flag_definition = {
-		coa = JAP_fascist
-		subject_canton = JAP_fascist
-		priority = 1500
-		trigger = { 
-			coa_def_fascist_flag_trigger = yes
-		}
-	}	
+	}		
 }
 
 JAS = { # Jaisalmer
@@ -9303,6 +9299,16 @@ TUG = { # Touggourt
 
 TUR = { # Turkey
 	flag_definition = {
+		coa = TUR_ottoman_federation
+		subject_canton = TUR_ottoman_federation
+		allow_overlord_canton = yes		
+		coa_with_overlord_canton = TUR_subject			
+		priority = 90
+		trigger = { 
+			scope:actor ?= { country_has_primary_culture = cu:mashriqi }
+		}
+	}	
+	flag_definition = {
 		coa = TUR
 		subject_canton = TUR
 		allow_overlord_canton = yes		
@@ -9318,7 +9324,7 @@ TUR = { # Turkey
 		trigger = { 
 			coa_def_monarchy_flag_trigger = yes
 		}
-	}	
+	}
 	flag_definition = {
 		coa = TUR	
 		subject_canton = TUR
