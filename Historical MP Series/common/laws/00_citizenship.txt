@@ -458,7 +458,8 @@ law_multicultural = {
 		country_acceptance_shared_cultural_trait_add = 40
 		country_acceptance_culture_base_add = 20
 		state_birth_rate_mult = -0.025
-		political_movement_radicalism_add = -1.00
+		#political_movement_radicalism_add = -1.00
+		state_radicals_from_political_movements_mult = -1.00
 	}
 	
 	acceptance_modifier = {
