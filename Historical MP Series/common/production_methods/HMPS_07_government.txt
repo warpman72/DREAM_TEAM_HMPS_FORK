@@ -147,9 +147,10 @@ pm_scholastic_education = {
 	
 	state_modifiers = {
 		workforce_scaled = { 
-			state_pop_qualifications_mult = 0.20
-			state_education_access_add = 0.05
+			state_pop_qualifications_mult = 0.1
+			state_education_access_add = 0.025
 			state_migration_pull_mult = 0.03
+			#building_throughput_add = 0.0025
 		}
 	}
 }
@@ -175,9 +176,10 @@ pm_philosophy_department = {
 	
 	state_modifiers = {
 		workforce_scaled = { 
-			state_pop_qualifications_mult = 0.40
-			state_education_access_add = 0.1
+			state_pop_qualifications_mult = 0.15
+			state_education_access_add = 0.05
 			state_migration_pull_mult = 0.06
+			#building_throughput_add = 0.005
 		}	
 	}
 }
@@ -203,9 +205,10 @@ pm_analytical_philosophy_department = {
 	
 	state_modifiers = {
 		workforce_scaled = { 
-			state_pop_qualifications_mult = 0.60
-			state_education_access_add = 0.15
+			state_pop_qualifications_mult = 0.20
+			state_education_access_add = 0.075
 			state_migration_pull_mult = 0.09
+			#building_throughput_add = 0.01
 		}	
 	}
 }	
